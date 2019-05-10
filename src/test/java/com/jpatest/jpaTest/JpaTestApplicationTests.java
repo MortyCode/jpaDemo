@@ -1,7 +1,7 @@
 package com.jpatest.jpaTest;
 
 import com.jpatest.jpaTest.entity.Account;
-import com.jpatest.jpaTest.entity.QAccount;
+import com.jpatest.jpaTest.query.QAccount;
 import com.jpatest.jpaTest.repository.AccountRepository;
 import com.querydsl.core.Tuple;
 import com.querydsl.core.types.Predicate;
@@ -11,7 +11,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.*;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.querydsl.QSort;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,9 +18,6 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
