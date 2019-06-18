@@ -4,16 +4,14 @@ spring:
   application:
     name: validate-server
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/demo
-    password: 123456
-    username: root
+    url: jdbc:mysql://rm-2ze93c1c4te72l6u7fo.mysql.rds.aliyuncs.com/txp?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&serverTimezone=Asia/Shanghai
+    password: lz_123
+    username: lz
     driver-class-name: com.mysql.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
   jpa:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL55Dialect
-    hibernate:
-      ddl-auto: update
 server:
   port: 9091

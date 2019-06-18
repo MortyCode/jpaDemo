@@ -3,6 +3,7 @@ package com.jpatest.jpaTest;
 import com.jpatest.jpaTest.entity.Account;
 import com.jpatest.jpaTest.query.QAccount;
 import com.jpatest.jpaTest.repository.AccountRepository;
+import com.jpatest.jpaTest.service.AccountServiceImpl;
 import com.querydsl.core.Tuple;
 import com.querydsl.core.types.Predicate;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -35,6 +36,8 @@ public class JpaTestApplicationTests {
 	JPAQueryFactory jpaQueryFactory;
 	@Resource
 	EntityManager entityManager;
+	@Resource
+	AccountServiceImpl accountService;
 
 	@Test
 	public void save() {
@@ -55,21 +58,22 @@ public class JpaTestApplicationTests {
 			System.out.println(account);
 
 
+
+		Account one = repository.getOne(account.getId());
+
+		one.setLastName("李世民");
+		repository.saveAndFlush(one);
+
+
 		Optional<Account> byId = repository.findById(account.getId());
-		Account account1 = byId.get();
-		account1.setFirstName("11111");
-		System.out.println(account1);
 
-		Optional<Account> one = repository.findById(account.getId());
-		Account account2 = one.get();
-		account2.setFirstName("222222");
-
-		Account save = repository.save(account2);
-
-		System.out.println(save);
+		System.out.println(byId.get());
 
 
 	}
+
+
+
 
 
 	/**
@@ -229,6 +233,9 @@ public class JpaTestApplicationTests {
 		System.out.println(all);
 		System.out.println(count);
 
+		String s = qaccount.age.toString();
+		System.out.println(s);
+
 
 		//2. 使用jpaQueryFactory
 		List<Account> fetch = jpaQueryFactory.selectFrom(qaccount).where(qaccount.age.eq(1)).fetch();
@@ -241,7 +248,6 @@ public class JpaTestApplicationTests {
 
 		String firstName = fetch1.get(0).get(qaccount.firstName);
 		System.out.println(firstName);
-
 	}
 
 }
