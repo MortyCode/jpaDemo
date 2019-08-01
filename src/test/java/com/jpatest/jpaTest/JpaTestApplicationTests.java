@@ -222,6 +222,7 @@ public class JpaTestApplicationTests {
 	/**
 	 * 第五种 使用querydsl查询，1.
 	 */
+	@Test
 	public void query5(){
 
 		//1. 使用findall查询
@@ -248,6 +249,15 @@ public class JpaTestApplicationTests {
 
 		String firstName = fetch1.get(0).get(qaccount.firstName);
 		System.out.println(firstName);
+	}
+
+	@Test
+	public void test6(){
+		List<Account> all = repository.findAll();
+
+		all.forEach(e->{
+			System.out.println(e);
+		});
 	}
 
 }

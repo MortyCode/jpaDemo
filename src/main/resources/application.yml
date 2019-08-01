@@ -8,10 +8,11 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
   jpa:
+    hibernate:
+      ddl-auto: update
     properties:
         hibernate:
-          ddl-auto: update
-        dialect: org.hibernate.dialect.MySQL55Dialect
+          dialect: org.hibernate.dialect.MySQL55Dialect
 
 server:
   port: 9091

@@ -1,5 +1,6 @@
 package com.jpatest.jpaTest.entity;
 
+import lombok.Builder;
 import lombok.Data;
 import org.hibernate.annotations.Proxy;
 
@@ -23,6 +24,10 @@ public class Account {
 
     @Column
     private String lastName;
+
+    @Column
+    @Version
+    private Long version;
 
     @Column(name = "age")
     private int age;
